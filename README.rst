@@ -13,6 +13,25 @@ and deployment named nginx-errors in your cluster. That service will be used as 
 ``default-backend`` for the ingress-nginx controller, so it will use that service (which
 will use the image in this repo) for the HTML pages of the error codes that you specify.
 
+Initial setup
+-------------
+
+1. Create a Container Registry `Personal Access Token (CR_PAT)
+   <https://github.com/settings/tokens>`_, giving it the ``write:packages`` permission
+   (which also gives it ``repo`` permissions).
+
+#. Add that token to your environment (e.g. in ``.envrc``)::
+
+     export CR_PAT_KEY=supersecrettoken
+
+#. Login to the registry::
+
+     echo $CR_PAT | docker login ghcr.io -u <USERNAME> --password-stdin
+
+#. Push the image::
+
+     docker push ghcr.io/caktus/custom-error-pages:latest
+
 
 TODO
 ----
