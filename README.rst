@@ -46,7 +46,22 @@ Initial setup
      docker push ghcr.io/caktus/custom-error-pages:latest
 
 
-eferences / Inspirations
+Updating this repo
+------------------
+
+Every push to the ``master`` branch will get run by Github Actions and a new docker
+image will be build and pushed to the Github Container Repository with a tag of ``latest``:
+`https://github.com/orgs/caktus/packages/container/package/custom-error-pages
+<https://github.com/orgs/caktus/packages/container/package/custom-error-pages>`_
+
+If you add a git tag to the master branch with a ``v`` prefix, then Github Actions will
+build an image with that tag (without the ``v`` prefix). So tagging the master branch
+with ``v1.0`` and pushing it will result in this image being built::
+
+  ghcr.io/caktus/custom-error-pages:1.0
+
+
+References / Inspirations
 -------------------------
 
 * https://github.com/kubernetes/ingress-nginx/tree/master/docs/examples/customization/custom-errors
